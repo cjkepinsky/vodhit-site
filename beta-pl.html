@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a111b">
+  <meta name="description" content="Zamknięta beta VODHit na macOS: status instalatora, wymagania, poradnik testera i ograniczenia.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="canonical" href="https://vodhit.app/beta-pl.html">
+  <link rel="alternate" hreflang="en" href="https://vodhit.app/beta.html">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="beta.css">
+  <title>Zamknięta beta | VODHit na macOS</title>
+</head>
+<body>
+  <a class="skip-link" href="#main">Przejdź do treści</a>
+  <header class="beta-header"><div class="beta-shell beta-header-inner">
+    <a class="beta-brand" href="index.html" aria-label="Strona główna VODHit">VOD<span>Hit</span></a>
+    <nav class="beta-nav" aria-label="Nawigacja beta">
+      <a href="index.html">Strona główna</a><a href="beta-pl.html" aria-current="page">Beta</a><a href="beta-guide-pl.html">Poradnik</a><a href="beta.html" lang="en" hreflang="en">English</a>
+    </nav>
+  </div></header>
+  <main id="main" class="beta-main beta-shell">
+    <div class="beta-eyebrow">macOS / tylko na zaproszenie</div>
+    <h1>Zamknięta beta VODHit</h1>
+    <p class="beta-lead">VODHit pomaga analizować eksporty z YouTube Studio, śledzić pracę nad filmami i przechowywać notatki lokalnie na Macu. To oprogramowanie eksperymentalne: część analiz i statystyk ma ograniczenia. Nie używaj ich do decyzji finansowych ani biznesowych.</p>
+    <section class="beta-state" aria-labelledby="download-status">
+      <strong id="download-status">Instalator: jeszcze niedostępny</strong>
+      <p>Nie opublikowano zweryfikowanego instalatora DMG podpisanego certyfikatem Developer ID i notaryzowanego przez Apple. Ta strona nie zawiera linku do pobrania. Nie instaluj nieoficjalnych kopii ani nie wyłączaj zabezpieczeń macOS.</p>
+      <p>Po zatwierdzeniu bety testerzy otrzymają indywidualną instrukcję dostępu, wersję i sumę kontrolną. Sam publiczny link nie ogranicza pobierania do zaproszonych osób.</p>
+    </section>
+    <div class="beta-actions"><a class="beta-button" href="beta-guide-pl.html">Przeczytaj poradnik testera</a><a class="beta-button secondary" href="index.html">Strona produktu</a></div>
+    <div class="beta-grid">
+      <section class="beta-panel"><h2>Wymagania</h2><ul><li>Mac z Apple Silicon (seria M), macOS 12 lub nowszy.</li><li>Lokalny folder na jeden profil danych VODHit.</li><li>Eksporty z własnego YouTube Studio (CSV, TSV lub ZIP).</li><li>Gotowość do zgłaszania błędów bez udostępniania prywatnych danych.</li></ul><p>Komputery Intel i starsze wersje macOS nie zostały zweryfikowane.</p></section>
+      <section class="beta-panel"><h2>Jak działa beta</h2><ul><li>Bez logowania do konta YouTube i bez automatycznej synchronizacji Google API.</li><li>Jeden kanał YouTube na profil lokalny.</li><li>Ręczny import eksportów Studio, notatki, wykresy, filtry i kopie zapasowe.</li><li>Niepełne pokrycie danych i brak automatycznych aktualizacji aplikacji.</li></ul><p>Przed interpretacją statystyk przeczytaj <a href="beta-guide-pl.html#limitations">opis ograniczeń</a>.</p></section>
+      <section class="beta-panel"><h2>Instalacja</h2><p>Po otrzymaniu zweryfikowanego instalatora skorzystaj z <a href="beta-guide-pl.html#install">instrukcji instalacji</a>. DMG ma zawierać aplikację i skrót do folderu Aplikacje. Nie powinien wymagać Terminala, Node.js ani kompilatora.</p></section>
+      <section class="beta-panel"><h2>Informacje zwrotne</h2><p>Skorzystaj z <a href="beta-guide-pl.html#testing">listy testów</a> i <a href="beta-guide-pl.html#feedback">szablonu zgłoszenia błędu</a>. Użyj prywatnego kanału wskazanego w zaproszeniu. Nie wysyłaj haseł, tokenów ani surowych eksportów Studio.</p></section>
+    </div>
+  </main>
+  <footer class="beta-footer"><div class="beta-shell beta-footer-inner"><span>VODHit — informacje o prywatnej becie, bez pobierania instalatora.</span><span><a href="beta-guide-pl.html">Poradnik</a> · <a href="privacy.html">Prywatność</a></span></div></footer>
+</body>
+</html>
