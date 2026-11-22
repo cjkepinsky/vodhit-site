@@ -4,23 +4,24 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0a111b">
-  <meta name="description" content="Complete VODhit macOS beta tester guide: install, first launch, YouTube Studio exports, CSV import, notes, analytics, backups, limitations and bug reports.">
+  <meta name="description" content="Complete VODHit macOS beta tester guide: install, first launch, YouTube Studio exports, CSV import, notes, analytics, backups, limitations and bug reports.">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="canonical" href="https://vodhit.app/beta-guide.html">
+  <link rel="alternate" hreflang="pl" href="https://vodhit.app/beta-guide-pl.html">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="beta.css">
-  <title>Beta tester guide | VODhit for macOS</title>
+  <title>Beta tester guide | VODHit for macOS</title>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="beta-header"><div class="beta-shell beta-header-inner">
-    <a class="beta-brand" href="index.html" aria-label="VODhit home">VOD<span>hit</span></a>
-    <nav class="beta-nav" aria-label="Beta navigation"><a href="index.html">Home</a><a href="beta.html">Beta access</a><a href="beta-guide.html" aria-current="page">Tester guide</a><a href="privacy.html">Privacy</a></nav>
+    <a class="beta-brand" href="index.html" aria-label="VODHit home">VOD<span>Hit</span></a>
+    <nav class="beta-nav" aria-label="Beta navigation"><a href="index.html">Home</a><a href="beta.html">Beta access</a><a href="beta-guide.html" aria-current="page">Tester guide</a><a href="beta-guide-pl.html" lang="pl" hreflang="pl">Polski</a><a href="privacy.html">Privacy</a></nav>
   </div></header>
   <main id="main" class="beta-main beta-shell">
     <div class="beta-article">
       <div class="beta-eyebrow">Tester handbook / experimental macOS release</div>
-      <h1>VODhit beta tester guide</h1>
+      <h1>VODHit beta tester guide</h1>
       <p class="beta-lead">Everything you need to install, explore, and safely test the macOS beta. Read the limitations before interpreting the analytics. This guide describes intended capabilities verified in the current codebase; installer availability and complete release acceptance are separate checks.</p>
       <div class="beta-state"><strong>Before you begin</strong><p>The first public-facing installer is not yet released. Follow installation steps only after receiving a signed and notarized DMG through an official beta invitation. You do not need to grant access to your Google account, disable Gatekeeper, or install Node.js.</p></div>
       <nav class="beta-toc" aria-label="Guide contents"><strong>In this guide</strong><ol>
@@ -39,8 +40,8 @@
       </ol></nav>
 
       <section id="overview">
-        <h2>1. What VODhit does</h2>
-        <p>VODhit is a local-first workspace for exploring exported YouTube Studio data and recording production decisions. The beta supports dashboards, sortable video tables, rankings, time-period comparisons, charts, video notes, Markdown checklists, custom video attributes, group comparisons, locally recorded change history, and backup/restore.</p>
+        <h2>1. What VODHit does</h2>
+        <p>VODHit is a local-first workspace for exploring exported YouTube Studio data and recording production decisions. The beta supports dashboards, sortable video tables, rankings, time-period comparisons, charts, video notes, Markdown checklists, custom video attributes, group comparisons, locally recorded change history, and backup/restore.</p>
         <p><strong>CSV-only:</strong> the application does not connect to Google OAuth, YouTube Data API or Analytics API. It does not automatically fetch new analytics, thumbnails, video status or metadata. Imported data reflects the export date and report coverage, not the current state of YouTube.</p>
         <p>Each local beta profile is tied to <strong>one YouTube channel</strong>. Multiple-channel switching, cloud synchronization, account-based sync, payments and automatic app updates are not included.</p>
       </section>
@@ -51,9 +52,9 @@
           <li>Mac with Apple Silicon (M1/M2/M3/M4 or newer compatible M-series), macOS 12 or later. Intel Macs are not verified.</li>
           <li>Enough free local storage for your exports, notes and backup copies.</li>
           <li>Your own YouTube Studio exports in CSV, TSV or ZIP format.</li>
-          <li>A separate folder for VODhit data. Avoid choosing the folder used by another analytics app.</li>
+          <li>A separate folder for VODHit data. Avoid choosing the folder used by another analytics app.</li>
         </ul>
-        <div class="beta-notice"><p><strong>Privacy:</strong> VODhit stores imports, notes and settings on your Mac. It does not upload these files to a VODhit cloud service. If you select a folder synchronized by iCloud, Dropbox or another provider, that provider may transfer those files independently.</p></div>
+        <div class="beta-notice"><p><strong>Privacy:</strong> VODHit stores imports, notes and settings on your Mac. It does not upload these files to a VODHit cloud service. If you select a folder synchronized by iCloud, Dropbox or another provider, that provider may transfer those files independently.</p></div>
         <p>Never share API tokens, YouTube account credentials or unredacted private analytics with beta support. Start with a small or synthetic export if you prefer to test without real channel figures.</p>
       </section>
 
@@ -88,7 +89,7 @@
       <section id="import">
         <h2>5. Import and assign your channel</h2>
         <ol>
-          <li>In VODhit, open <strong>Data settings → Studio imports</strong> (Polish UI: <strong>Ustawienia danych → Importy Studio</strong>).</li>
+          <li>In VODHit, open <strong>Data settings → Studio imports</strong> (Polish UI: <strong>Ustawienia danych → Importy Studio</strong>).</li>
           <li>Choose <strong>Add Studio CSV/TSV/ZIP</strong> (Polish UI: <strong>Dograj CSV/TSV/ZIP ze Studio</strong>) and select your export.</li>
           <li>Review the import preview: video count, date range, detected daily dates, available metrics, and all warnings. The preview cannot conclusively prove that the report used Daily grouping; verify that in Studio yourself.</li>
           <li>On the first import, enter a recognizable channel name and confirm that the files belong to that channel. If the export explicitly contains a valid YouTube <strong>Channel ID</strong>, the app can record it for later comparison.</li>
@@ -145,7 +146,7 @@
           <li><strong>Manual imports only:</strong> no Google login, OAuth, API syncing, automatic metadata retrieval or live thumbnail updates.</li>
           <li><strong>Single-channel profile:</strong> do not mix two channels into one profile. Switching channels is not a supported beta feature.</li>
           <li><strong>Missing data:</strong> videos with incomplete metrics can remain stored while being omitted from some calculations. Blank does not equal zero.</li>
-          <li><strong>Local storage:</strong> no VODhit cloud backup or encryption of exported backup JSON; an external sync service may independently upload a selected folder.</li>
+          <li><strong>Local storage:</strong> no VODHit cloud backup or encryption of exported backup JSON; an external sync service may independently upload a selected folder.</li>
           <li><strong>No automatic updater:</strong> new builds must be downloaded and installed manually; keep a separate backup before updating.</li>
           <li><strong>Platform scope:</strong> Apple Silicon is the verified build target. Intel and older macOS versions are unsupported or unverified.</li>
           <li><strong>First-run edge cases:</strong> several native GUI recovery scenarios (missing volume, bad permissions or profile mismatch) still need confirmation on a clean test account or VM.</li>
@@ -171,7 +172,7 @@
       <section id="feedback">
         <h2>11. How to report a bug</h2>
         <p>Send your report using the private contact method provided in your beta invitation. Do not post it publicly if it contains private channel information. A useful report includes:</p>
-        <pre><code>VODhit beta report
+        <pre><code>VODHit beta report
 Build/version:
 macOS version:
 Mac model (Apple Silicon):
@@ -201,9 +202,9 @@ Data-safety impact: none / possible corruption / data loss / unknown</code></pre
         <p>For release availability and participation details, return to <a href="beta.html">the closed beta page</a>.</p>
       </section>
 
-      <div class="beta-actions"><a class="beta-button" href="beta.html">Back to beta access</a><a class="beta-button secondary" href="index.html">VODhit home</a></div>
+      <div class="beta-actions"><a class="beta-button" href="beta.html">Back to beta access</a><a class="beta-button secondary" href="index.html">VODHit home</a></div>
     </div>
   </main>
-  <footer class="beta-footer"><div class="beta-shell beta-footer-inner"><span>VODhit macOS — private beta tester guide. Content may change between builds.</span><span><a href="beta.html">Beta access</a> · <a href="privacy.html">Privacy</a></span></div></footer>
+  <footer class="beta-footer"><div class="beta-shell beta-footer-inner"><span>VODHit macOS — private beta tester guide. Content may change between builds.</span><span><a href="beta.html">Beta access</a> · <a href="privacy.html">Privacy</a></span></div></footer>
 </body>
 </html>

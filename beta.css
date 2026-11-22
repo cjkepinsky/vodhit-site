@@ -35,7 +35,7 @@
 .beta-article li{margin:8px 0}
 .beta-article a:not(.beta-button),.beta-toc a,.beta-footer a{color:#9ce5db;text-decoration:underline;text-underline-offset:3px}
 .beta-article code{font-size:.9em;background:#233443;border:1px solid #344c5e;padding:2px 5px;border-radius:4px;overflow-wrap:anywhere}
-.beta-article pre{padding:15px;background:#0d1821;border:1px solid #304554;border-radius:10px;overflow:auto}
+.beta-article pre{padding:15px;background:#0d1821;border:1px solid #304554;border-radius:10px;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere}
 .beta-article pre code{border:none;padding:0;background:transparent}
 .beta-article table{width:100%;border-collapse:collapse;font-size:14px}
 .beta-article th,.beta-article td{border-bottom:1px solid #364757;padding:12px;text-align:left;vertical-align:top}
