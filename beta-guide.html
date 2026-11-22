@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a111b">
+  <meta name="description" content="Complete VODhit macOS beta tester guide: install, first launch, YouTube Studio exports, CSV import, notes, analytics, backups, limitations and bug reports.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="canonical" href="https://vodhit.app/beta-guide.html">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="beta.css">
+  <title>Beta tester guide | VODhit for macOS</title>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="beta-header"><div class="beta-shell beta-header-inner">
+    <a class="beta-brand" href="index.html" aria-label="VODhit home">VOD<span>hit</span></a>
+    <nav class="beta-nav" aria-label="Beta navigation"><a href="index.html">Home</a><a href="beta.html">Beta access</a><a href="beta-guide.html" aria-current="page">Tester guide</a><a href="privacy.html">Privacy</a></nav>
+  </div></header>
+  <main id="main" class="beta-main beta-shell">
+    <div class="beta-article">
+      <div class="beta-eyebrow">Tester handbook / experimental macOS release</div>
+      <h1>VODhit beta tester guide</h1>
+      <p class="beta-lead">Everything you need to install, explore, and safely test the macOS beta. Read the limitations before interpreting the analytics. This guide describes intended capabilities verified in the current codebase; installer availability and complete release acceptance are separate checks.</p>
+      <div class="beta-state"><strong>Before you begin</strong><p>The first public-facing installer is not yet released. Follow installation steps only after receiving a signed and notarized DMG through an official beta invitation. You do not need to grant access to your Google account, disable Gatekeeper, or install Node.js.</p></div>
+      <nav class="beta-toc" aria-label="Guide contents"><strong>In this guide</strong><ol>
+        <li><a href="#overview">What the beta does</a></li>
+        <li><a href="#requirements">Requirements and safe setup</a></li>
+        <li><a href="#install">Install and first launch</a></li>
+        <li><a href="#studio-export">Export from YouTube Studio</a></li>
+        <li><a href="#import">Import and assign a channel</a></li>
+        <li><a href="#workspace">Explore the workspace</a></li>
+        <li><a href="#notes">Notes and checklists</a></li>
+        <li><a href="#backup">Back up and restore</a></li>
+        <li><a href="#limitations">Important limitations</a></li>
+        <li><a href="#testing">Suggested test checklist</a></li>
+        <li><a href="#feedback">Report a bug safely</a></li>
+        <li><a href="#troubleshooting">Troubleshooting and removal</a></li>
+      </ol></nav>
+
+      <section id="overview">
+        <h2>1. What VODhit does</h2>
+        <p>VODhit is a local-first workspace for exploring exported YouTube Studio data and recording production decisions. The beta supports dashboards, sortable video tables, rankings, time-period comparisons, charts, video notes, Markdown checklists, custom video attributes, group comparisons, locally recorded change history, and backup/restore.</p>
+        <p><strong>CSV-only:</strong> the application does not connect to Google OAuth, YouTube Data API or Analytics API. It does not automatically fetch new analytics, thumbnails, video status or metadata. Imported data reflects the export date and report coverage, not the current state of YouTube.</p>
+        <p>Each local beta profile is tied to <strong>one YouTube channel</strong>. Multiple-channel switching, cloud synchronization, account-based sync, payments and automatic app updates are not included.</p>
+      </section>
+
+      <section id="requirements">
+        <h2>2. Requirements and safe setup</h2>
+        <ul>
+          <li>Mac with Apple Silicon (M1/M2/M3/M4 or newer compatible M-series), macOS 12 or later. Intel Macs are not verified.</li>
+          <li>Enough free local storage for your exports, notes and backup copies.</li>
+          <li>Your own YouTube Studio exports in CSV, TSV or ZIP format.</li>
+          <li>A separate folder for VODhit data. Avoid choosing the folder used by another analytics app.</li>
+        </ul>
+        <div class="beta-notice"><p><strong>Privacy:</strong> VODhit stores imports, notes and settings on your Mac. It does not upload these files to a VODhit cloud service. If you select a folder synchronized by iCloud, Dropbox or another provider, that provider may transfer those files independently.</p></div>
+        <p>Never share API tokens, YouTube account credentials or unredacted private analytics with beta support. Start with a small or synthetic export if you prefer to test without real channel figures.</p>
+      </section>
+
+      <section id="install">
+        <h2>3. Install and first launch</h2>
+        <ol>
+          <li>Use only the official download instructions supplied with your beta invitation. Confirm the version and, when provided, the SHA-256 checksum.</li>
+          <li>Double-click the downloaded <code>.dmg</code> file. Drag the application to <strong>Applications</strong> in the Finder window.</li>
+          <li>Eject the mounted disk image. Start the app from <strong>Applications</strong>. You should not need Terminal, Node.js or a separate server.</li>
+          <li>At first launch, choose <strong>Use recommended folder</strong> or <strong>Choose another folder</strong>. The recommended directory currently points to <code>~/Library/Application Support/ShotKot Beta/</code>. The custom-folder option creates a <code>VODHit Data</code> subfolder inside the parent you choose.</li>
+          <li>Do not select an existing unrelated application's folder or the root of a drive. Keep the chosen profile directory available and writable.</li>
+          <li>Open the data settings and verify the <strong>full active directory path</strong>. Use the <strong>Show data folder in Finder</strong> control to confirm it is correct.</li>
+        </ol>
+        <p>Early builds may still display the technical name <strong>ShotKot Beta</strong> until the VODHit branding change is included in a verified release. Follow the release notes shipped with your specific build.</p>
+        <div class="beta-notice warning"><p><strong>Important:</strong> the beta remembers one profile and should not create a new empty profile if the saved folder is missing, the disk is disconnected, or the profile ID is different. If you see a recovery warning, reconnect the original disk or locate the original profile. Do not create a replacement folder to work around the message.</p></div>
+      </section>
+
+      <section id="studio-export">
+        <h2>4. Export useful data from YouTube Studio</h2>
+        <ol>
+          <li>Open <a href="https://studio.youtube.com/" rel="noopener noreferrer">YouTube Studio</a>, then <strong>Analytics → Advanced mode</strong> (in Polish: <strong>Statystyki → Tryb zaawansowany</strong>).</li>
+          <li>View the <strong>channel</strong> rather than an individual video. Select the <strong>Content / Treść</strong> breakdown and an explicit date range, e.g. <strong>Last 365 days</strong>.</li>
+          <li>Set the date granularity to <strong>Daily / Dziennie</strong>. Selecting 365 days alone does not guarantee daily records; avoid weekly, monthly or yearly grouping.</li>
+          <li>Include identifiers such as <strong>Content/video ID</strong> and <strong>Video title</strong>. If available, include publication date and duration.</li>
+          <li>Include five base metrics: <strong>Views</strong>, <strong>Watch time (hours)</strong>, <strong>Average view duration</strong>, <strong>Thumbnail impressions</strong>, and <strong>Thumbnail click-through rate (CTR %)</strong>.</li>
+          <li>Select <strong>Export current view</strong> and download CSV or ZIP. Do not edit numerical values or column headers before importing.</li>
+        </ol>
+        <p>File names and localized column names can vary. Some metrics may be unavailable for some videos: <strong>missing is not zero</strong>. YouTube's exported tables may also have a 500-row limit; check whether the export covers all intended videos and dates.</p>
+        <p>Official reference: <a href="https://support.google.com/youtube/answer/9717005?hl=en" rel="noopener noreferrer">YouTube Studio advanced analytics exports</a>.</p>
+      </section>
+
+      <section id="import">
+        <h2>5. Import and assign your channel</h2>
+        <ol>
+          <li>In VODhit, open <strong>Data settings → Studio imports</strong> (Polish UI: <strong>Ustawienia danych → Importy Studio</strong>).</li>
+          <li>Choose <strong>Add Studio CSV/TSV/ZIP</strong> (Polish UI: <strong>Dograj CSV/TSV/ZIP ze Studio</strong>) and select your export.</li>
+          <li>Review the import preview: video count, date range, detected daily dates, available metrics, and all warnings. The preview cannot conclusively prove that the report used Daily grouping; verify that in Studio yourself.</li>
+          <li>On the first import, enter a recognizable channel name and confirm that the files belong to that channel. If the export explicitly contains a valid YouTube <strong>Channel ID</strong>, the app can record it for later comparison.</li>
+          <li>If the file has no reliable Channel ID, you may be asked to reconfirm its channel at future imports. Never import another channel into the same profile.</li>
+          <li>Complete the import only when the preview and channel identity look correct. After import, check the selected date period and the displayed video table.</li>
+        </ol>
+        <div class="beta-notice warning"><p><strong>Do not confuse import success with complete data.</strong> Partial records may be stored, but existing calculations can exclude videos without all five base metrics. Apparent totals and rankings may represent only a subset of the channel.</p></div>
+        <p>Explicit zero and unavailable values are different. If an analytics field is missing, do not interpret it as zero. Do not use current beta rankings as an authoritative source for channel-wide totals or financial decisions.</p>
+      </section>
+
+      <section id="workspace">
+        <h2>6. Explore the workspace</h2>
+        <p>After import, explore the dashboard, video table, rankings and chart views. Try sorting videos, narrowing the date range, and comparing different periods. The visualizations use locally imported snapshots; they are not live YouTube measurements.</p>
+        <table>
+          <thead><tr><th>Area</th><th>What to try</th><th>What to watch for</th></tr></thead>
+          <tbody>
+            <tr><td>Overview / dashboard</td><td>Review views, watch time and other reported metrics for the selected period.</td><td>Coverage may be partial and should not be assumed complete.</td></tr>
+            <tr><td>Video table</td><td>Sort, filter, inspect video details and compare results.</td><td>Missing metrics differ from measured zeros.</td></tr>
+            <tr><td>Rankings and charts</td><td>Change the period; compare several videos.</td><td>Some calculations still require all five metrics to exist.</td></tr>
+            <tr><td>Groups and attributes</td><td>Mark a few synthetic video characteristics; compare groups.</td><td>Some imported videos lack publication-status data and may be excluded.</td></tr>
+            <tr><td>Change history</td><td>Inspect existing locally recorded changes and snapshots.</td><td>No automatic collection of current YouTube title/thumbnail edits.</td></tr>
+          </tbody>
+        </table>
+        <p>If a graph, rank or derived metric appears inconsistent with the Studio export, document the mismatch rather than assuming that the application or Studio is necessarily correct.</p>
+      </section>
+
+      <section id="notes">
+        <h2>7. Notes, checklists and video attributes</h2>
+        <ol>
+          <li>Open a video and create or edit its local note. The editor supports Markdown-style notes and checklists.</li>
+          <li>Create a simple test note such as <code>Beta test: thumbnail changed</code>, add a checklist item, and save.</li>
+          <li>Use custom flags/attributes to describe production characteristics or experiments. These are your own annotations, not facts retrieved from YouTube.</li>
+          <li>Close and reopen the note; then quit and restart the app. Confirm that the note and custom metadata remain intact.</li>
+        </ol>
+        <p>Saved notes live in your selected local data profile. Treat important notes like any other files: maintain backups, especially before updates or restoration.</p>
+      </section>
+
+      <section id="backup">
+        <h2>8. Back up and restore safely</h2>
+        <p>Use the <strong>Export backup</strong> action in the application's data settings to save a backup JSON file somewhere you control. Keep a copy outside the active profile folder (ideally on another drive). The file is not encrypted; store it securely.</p>
+        <ol>
+          <li>Export a backup and confirm that the file exists in Finder.</li>
+          <li>If you want to test restore, first work in a disposable synthetic profile and create a separate backup of its initial state.</li>
+          <li>Use <strong>Import/Restore backup</strong> only when you intend to replace the current managed profile data. Read the confirmation carefully.</li>
+          <li>After restore, check notes, flags, channel identity and imported records. Reopen the app to verify persistence.</li>
+        </ol>
+        <div class="beta-notice warning"><p><strong>Restoring is not merging.</strong> It replaces managed profile data after validation; the app normally creates a pre-import recovery backup first. A backup from another populated profile is rejected. Do not use restore to combine channels or to migrate private data from a different application.</p></div>
+      </section>
+
+      <section id="limitations">
+        <h2>9. Known limitations and safety notes</h2>
+        <ul>
+          <li><strong>Experimental analytics:</strong> several data-quality issues remain under development, including aggregation coverage, CTR sorting and some video status-dependent analyses. Do not use current output to make financial or other high-stakes decisions.</li>
+          <li><strong>Manual imports only:</strong> no Google login, OAuth, API syncing, automatic metadata retrieval or live thumbnail updates.</li>
+          <li><strong>Single-channel profile:</strong> do not mix two channels into one profile. Switching channels is not a supported beta feature.</li>
+          <li><strong>Missing data:</strong> videos with incomplete metrics can remain stored while being omitted from some calculations. Blank does not equal zero.</li>
+          <li><strong>Local storage:</strong> no VODhit cloud backup or encryption of exported backup JSON; an external sync service may independently upload a selected folder.</li>
+          <li><strong>No automatic updater:</strong> new builds must be downloaded and installed manually; keep a separate backup before updating.</li>
+          <li><strong>Platform scope:</strong> Apple Silicon is the verified build target. Intel and older macOS versions are unsupported or unverified.</li>
+          <li><strong>First-run edge cases:</strong> several native GUI recovery scenarios (missing volume, bad permissions or profile mismatch) still need confirmation on a clean test account or VM.</li>
+        </ul>
+      </section>
+
+      <section id="testing">
+        <h2>10. Suggested tester checklist</h2>
+        <p>Please spend approximately one session checking the following flow, then report what actually happened. Skip any step that requires risking important data.</p>
+        <ol>
+          <li>Download the approved DMG; confirm you can install and start it normally without bypassing Gatekeeper.</li>
+          <li>Choose a new local folder and check that the full path and Finder reveal agree.</li>
+          <li>Import one correctly prepared Studio export; review any warnings and assign its channel.</li>
+          <li>Check the date range, a few videos, missing metrics and sorting behavior.</li>
+          <li>Create a note and checklist item, save and restart the app; verify persistence.</li>
+          <li>Export a backup; verify that a JSON file was actually saved.</li>
+          <li>Quit the app, reopen it, and confirm the same profile and data appear.</li>
+          <li>Record bugs, confusing wording, unexpected numbers and missing features. Include each expected versus actual result.</li>
+        </ol>
+        <p>Advanced testers may use a clean macOS account or VM to verify default-folder selection, cancelling onboarding, disconnected drives and recovery warnings. Never intentionally corrupt a real profile.</p>
+      </section>
+
+      <section id="feedback">
+        <h2>11. How to report a bug</h2>
+        <p>Send your report using the private contact method provided in your beta invitation. Do not post it publicly if it contains private channel information. A useful report includes:</p>
+        <pre><code>VODhit beta report
+Build/version:
+macOS version:
+Mac model (Apple Silicon):
+Area: install / import / table / charts / notes / backup / other
+Steps to reproduce:
+Expected result:
+Actual result:
+Does the problem persist after restarting? yes / no / untested
+Screenshot or sanitized example attached? yes / no
+Data-safety impact: none / possible corruption / data loss / unknown</code></pre>
+        <p>On macOS, press <strong>Shift + Command + 4</strong> to capture a selected screen area. Redact private channel IDs, revenue, email addresses and file paths before sharing. Prefer synthetic sample exports if a reproducible input file is needed.</p>
+        <p>Report unexpectedly missing data, a different channel appearing, failed backup, or two windows editing one profile as a <strong>high-priority safety issue</strong>. Stop using the affected profile until it has been examined.</p>
+      </section>
+
+      <section id="troubleshooting">
+        <h2>12. Troubleshooting, updates and removal</h2>
+        <h3>macOS refuses to open the app</h3>
+        <p>Verify that the installer came from the official beta channel and that the release is signed and notarized. Do not disable Gatekeeper, use quarantine-removal commands or install an unsigned replacement; contact beta support with the exact warning.</p>
+        <h3>The selected folder is unavailable</h3>
+        <p>Reconnect the original volume or choose the same existing profile through the recovery prompt. Check disk permissions and free space. Do not create a blank replacement folder or delete the profile lock file.</p>
+        <h3>Import rejected or numbers appear incomplete</h3>
+        <p>Verify Studio's <strong>Daily</strong> grouping, channel scope, dates, required columns, and any missing metrics. A successful partial import can still result in incomplete rankings.</p>
+        <h3>Updating the beta</h3>
+        <p>Make an export backup, quit the old application using <strong>Command + Q</strong>, install the newer approved release, and open the same saved data profile. Do not run multiple app versions simultaneously against one profile.</p>
+        <h3>Removing the beta</h3>
+        <p>Quit the application and move the app from Applications to Trash. This should not remove the separate data profile or exported backups. Do not delete the profile directory unless you have deliberately decided to remove your local data.</p>
+        <p>For release availability and participation details, return to <a href="beta.html">the closed beta page</a>.</p>
+      </section>
+
+      <div class="beta-actions"><a class="beta-button" href="beta.html">Back to beta access</a><a class="beta-button secondary" href="index.html">VODhit home</a></div>
+    </div>
+  </main>
+  <footer class="beta-footer"><div class="beta-shell beta-footer-inner"><span>VODhit macOS — private beta tester guide. Content may change between builds.</span><span><a href="beta.html">Beta access</a> · <a href="privacy.html">Privacy</a></span></div></footer>
+</body>
+</html>
